@@ -7,10 +7,10 @@
 /*
     FindProcessId and GetProcessBaseAddress functions were found on stackoverflow
 */
-uintptr_t GetProcessBaseAddress(DWORD processID)
+unsigned long long GetProcessBaseAddress(DWORD processID)
 {
      
-    uintptr_t   baseAddress = 0;
+    unsigned long long   baseAddress = 0;
     HANDLE      processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processID);
     HMODULE* moduleArray;
     LPBYTE      moduleArrayBytes;
@@ -33,7 +33,7 @@ uintptr_t GetProcessBaseAddress(DWORD processID)
 
                     if (EnumProcessModules(processHandle, moduleArray, bytesRequired, &bytesRequired))
                     {
-                        baseAddress = (uintptr_t)moduleArray[0];
+                        baseAddress = (unsigned long long)moduleArray[0];
                     }
 
                     LocalFree(moduleArrayBytes);
