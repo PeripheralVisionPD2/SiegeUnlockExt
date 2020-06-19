@@ -75,12 +75,11 @@ DWORD FindProcessId(const std::wstring& processName)
     CloseHandle(processesSnapshot);
     return 0;
 }
-void unlock_all_ext()
+void UnlockAllExt()
 {
     DWORD Pid = FindProcessId(L"RainbowSix.exe");
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Pid);
     unsigned long long GameBaseAddress = GetProcessBaseAddress(Pid);
-    unsigned long long Buffer = NULL;
     char UnlockShell[] = { 
         0x41,0xC7,0x46,0x51,0x00,
         0x00,0x00,0x00,0x41,0xC7,
@@ -93,6 +92,6 @@ void unlock_all_ext()
 }
 int main()
 {
-    unlock_all_ext();
+    UnlockAllExt();
     return 0;
 }
