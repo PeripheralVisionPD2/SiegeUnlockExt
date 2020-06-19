@@ -81,15 +81,15 @@ void unlock_all_ext()
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Pid);
     unsigned long long GameBaseAddress = GetProcessBaseAddress(Pid);
     unsigned long long Buffer = NULL;
-    char unlockallShell[] = { 
+    char UnlockShell[] = { 
         0x41,0xC7,0x46,0x51,0x00,
         0x00,0x00,0x00,0x41,0xC7,
         0x46,0x52,0x01,0x00,0x00,
         0x00,0xE9,0x6D,0xB4,0xA1,
         0xFC }; 
-    char jmpShell[] = { 0xE9,0x57,0x47,0x5E,0x03 };
-    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x4A3480D), unlockallShell, sizeof(unlockallShell), NULL);
-    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x14500B1), jmpShell, sizeof(jmpShell), NULL);
+    char JmpShell[] = { 0xE9,0x57,0x47,0x5E,0x03 };
+    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x4A3480D), UnlockShell, sizeof(UnlockShell), NULL);
+    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x14500B1), JmpShell, sizeof(JmpShell), NULL);
 }
 int main()
 {
