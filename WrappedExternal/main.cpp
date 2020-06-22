@@ -9,7 +9,7 @@
 */
 unsigned long long GetProcessBaseAddress(DWORD processID)
 {
-     
+
     unsigned long long   baseAddress = 0;
     HANDLE      processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processID);
     HMODULE* moduleArray;
@@ -80,7 +80,7 @@ void UnlockAllExt()
     DWORD Pid = FindProcessId(L"RainbowSix.exe");
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Pid);
     unsigned long long GameBaseAddress = GetProcessBaseAddress(Pid);
-    char MovShell[] = { 0x41, 0xC6, 0x46, 0x51, 0x00 };
+    char MovShell[] = { 0x41, 0xC6, 0x46, 0x51, 0x00, 0x90 };
     WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x144EA6B), MovShell, sizeof(MovShell), NULL);
 }
 int main()
