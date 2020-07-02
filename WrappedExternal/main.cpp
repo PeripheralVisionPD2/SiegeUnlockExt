@@ -81,7 +81,7 @@ void UnlockAllExt()
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Pid);
     unsigned long long GameBaseAddress = GetProcessBaseAddress(Pid);
     char MovShell[] = { 0x41, 0xC6, 0x46, 0x51, 0x00, 0x90 };
-    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x144EA6B), MovShell, sizeof(MovShell), NULL);
+    WriteProcessMemory(hProcess, (LPVOID)(GameBaseAddress + 0x1EC6E5B), MovShell, sizeof(MovShell), NULL);
 }
 int main()
 {
